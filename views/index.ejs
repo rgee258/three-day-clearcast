@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+      <title>Clear Day Calendar</title>
+      <link rel="stylesheet" href="/stylesheets/style.css" />
+      <script src="/javascripts/geolocate.js"></script>
+    </head>
+  <body>
+    <h1>Clear Day Calendar</h1>
+    <h1>Five Day Clear Cast</h1>
+    <% if (locals.weather) { %>
+      <h3><%= weather %></h3>
+    <% } %>
+    <div class="weather-form">
+      <form action="/search" method="POST">
+        <input type="text" id="weatherSearch" placeholder="Enter your location here or use the Local button to find the weather nearby">
+        <input type="submit" value="Search">
+        <button type="button" onclick="getLocal()">Local</button>
+      </form>
+    </div>
+  </body>
+</html>
