@@ -8,16 +8,47 @@
     </head>
   <body>
     <h1>Clear Day Calendar</h1>
-    <h1>Five Day Clear Cast</h1>
-    <% if (locals.weather) { %>
-      <h3><%= weather %></h3>
-    <% } %>
     <div class="weather-form">
-      <form action="/search" method="POST">
-        <input type="text" id="weatherSearch" placeholder="Enter your location here or use the Local button to find the weather nearby">
+      <form action="/" method="POST">
+        <label for="twelveAm">00:00</label>
+        <input type="checkbox" id="twelveAm" name="weatherHours" value="00:00:00">
+        <label for="threeAm">03:00</label>
+        <input type="checkbox" id="threeAm" name="weatherHours" value="03:00:00">
+        <label for="sixAm">06:00</label>
+        <input type="checkbox" id="sixAm" name="weatherHours" value="06:00:00">
+        <label for="nineAm">09:00</label>
+        <input type="checkbox" id="nineAm" name="weatherHours" value="09:00:00">
+        <label for="twelvePm">12:00</label>
+        <input type="checkbox" id="twelvePm" name="weatherHours" value="12:00:00" checked>
+        <label for="threePm">15:00</label>
+        <input type="checkbox" id="threePm" name="weatherHours" value="15:00:00" checked>
+        <label for="sixPM">18:00</label>
+        <input type="checkbox" id="sixPM" name="weatherHours" value="18:00:00" checked>
+        <label for="ninePm">21:00</label>
+        <input type="checkbox" id="ninePm" name="weatherHours" value="21:00:00">
+        <br>
+        <label for="csFormat">City, State</label>
+        <input type="radio" id="csFormat" name="weatherFormat" value="cs" checked>
+        <label for="zFormat">ZIP Code</label>
+        <input type="radio" id="zFormat" name="weatherFormat" value="z">
+        <label for="llFormat">Latitude, Longitude</label>
+        <input type="radio" id="llFormat" name="weatherFormat" value="ll">
+        <br>
+        <input type="text" id="weatherSearch" name="weatherSearch" placeholder="Enter your location here or use the Local button to find the weather nearby">
+        <br>
         <input type="submit" value="Search">
         <button type="button" onclick="getLocal()">Local</button>
       </form>
     </div>
+    <% if (locals.weather) { %>
+      <div>
+        <h1>Five Day Clear Cast</h1>
+        <h3><%= weather %></h3>
+      </div>
+    <% } %>
+    <% if (locals.error) { %>
+      <div>
+      </div>
+    <% } %>%>
   </body>
 </html>
