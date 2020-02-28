@@ -9,11 +9,22 @@ router.get('/', function(req, res, next) {
 
 /* POST weather search */
 router.post('/', async function(req, res, next) {
-  const weatherResults = await getWeather(req.body.weatherSearch, req.body.weatherFormat);
-  console.log("API call finished");
-  const displayResults = gatherResults(req.body.weatherHours, weatherResults);
-  console.log(displayResults);
-  res.render('index', { weather: weatherResults });
+  try {
+    const weatherResults = await getWeather(req.body.weatherSearch, req.body.weatherFormat);
+
+    // Throw the error object received if the response code is not 200
+    if (weatherResults.cod !== '200') {
+      throw weatherResults;
+    }
+
+    const displayResults = gatherResults(req.body.weatherHours, weatherResults);
+    console.log(displayResults);
+    res.render('index', { weather: displayResults });
+  }
+  catch (error) {
+    const errorResults = formatError(error.cod);
+    res.render('index', { error: errorResults });
+  }
 });
 
 async function getWeather(input, urlChoice) {
@@ -21,15 +32,10 @@ async function getWeather(input, urlChoice) {
     const weatherUrl = formatUrl(input, urlChoice);
     const response = await fetch(weatherUrl);
 
-    if (response.status !== 200) {
-      throw response.status;
-    }
-
     const json = await response.json();
     return json;
   } 
   catch(error) {
-    console.log()
     return error;
   }
 }
@@ -45,7 +51,7 @@ function formatUrl(input, choice) {
       const llQuery = parseInput(input);
       return `https://api.openweathermap.org/data/2.5/forecast?lat=${llQuery[0]}&lon=${llQuery[1]}&appid=${process.env.OPENWEATHER_API_KEY}`;
     default:
-      throw '400';
+      throw 400;
   }
 }
 
@@ -91,12 +97,47 @@ function gatherResults(hours, response) {
     daysForecast.push(currentDay);
   }
 
+  if (typeof response.city.name === 'undefined') {
+    results.locationName = 'Unknown City Name';
+  } else {
+    results.locationName = response.city.name;
+  }
+
   results.days = days;
   results.dayOne = daysForecast[0];
   results.dayTwo = daysForecast[1];
   results.dayThree = daysForecast[2];
 
   return results;
+}
+
+function formatError(errorCode) {
+
+  let error = {};
+
+  switch (errorCode) {
+    case ('401'):
+      error.code = '401';
+      error.message = 'Invalid or missing API key.';
+      break;
+    case ('404'):
+      error.code = '404';
+      error.message = 'The weather of the location you searched for could not be found.'
+      break;
+    case ('429'):
+      error.code = '429';
+      error.message = 'The API call limit has been met, try again later.';
+      break;
+    case ('400'):
+      error.code = '400';
+      error.message = 'Bad request sent. Make sure your search query is correct and try again.';
+      break;
+    default:
+      error.code = '500';
+      error.message = 'A problem occurred on the server, ensure your submission was valid and try again later.';
+  }
+
+  return error;
 }
 
 

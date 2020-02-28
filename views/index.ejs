@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-      <title>Clear Day Calendar</title>
+      <title>Three Day Clearcast</title>
       <link rel="stylesheet" href="/stylesheets/style.css" />
       <script src="/javascripts/geolocate.js"></script>
     </head>
@@ -43,11 +43,13 @@
     <% if (locals.weather) { %>
       <div>
         <h1>Five Day Clear Cast</h1>
-        <h3><%= weather %></h3>
+        <h3><%= locals.weather.locationName %></h3>
       </div>
     <% } %>
     <% if (locals.error) { %>
       <div>
+        <h3><%= locals.error.code %></h3>
+        <h3><%= locals.error.message %></h3>
       </div>
     <% } %>%>
   </body>
