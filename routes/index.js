@@ -1,14 +1,20 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const fetch = require('node-fetch');
 
-/* GET home page. */
+// GET home page.
 router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-/* POST weather search */
+// POST weather search
 router.post('/', async function(req, res, next) {
+
+  // Precautionary server side validation for form buttons
+  if (formButtonError(req.body.weatherHours, req.body.weatherFormat)) {
+    return next();
+  }
+
   try {
     const weatherResults = await getWeather(req.body.weatherSearch, req.body.weatherFormat);
 
@@ -21,10 +27,13 @@ router.post('/', async function(req, res, next) {
     console.log(displayResults);
     res.render('index', { weather: displayResults });
   }
+
   catch (error) {
-    const errorResults = formatError(error.cod);
-    res.render('index', { error: errorResults });
+    res.render('index', { error: formatError(error.cod) });
   }
+
+}, function(req, res, next) {
+  res.render('index', { error: formatError('400') })
 });
 
 async function getWeather(input, urlChoice) {
@@ -38,6 +47,21 @@ async function getWeather(input, urlChoice) {
   catch(error) {
     return error;
   }
+}
+
+/**
+ * formButtonError()
+ *
+ * Checks if any of the form button inputs are undefined
+ * Returns a boolean
+ */
+function formButtonError(hoursCount, formatCount) {
+
+  if (typeof hoursCount === 'undefined' || typeof formatCount === 'undefined') {
+    return true;
+  }
+
+  return false;
 }
 
 function formatUrl(input, choice) {
