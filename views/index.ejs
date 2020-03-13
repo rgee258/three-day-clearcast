@@ -12,43 +12,108 @@
     </head>
   <body>
     <%- include('partials/navigation.ejs') %>
-    <div class="main-content container">
+    <div class="main-content container w-50">
       <div class="form-area">
         <form id="weather-form" action="/" method="POST">
-          <label for="twelveAm">12:00 AM</label>
-          <input type="checkbox" id="twelveAm" class="hour" name="weatherHours" value="00:00:00">
-          <label for="threeAm">3:00 AM</label>
-          <input type="checkbox" id="threeAm" class="hour" name="weatherHours" value="03:00:00">
-          <label for="sixAm">6:00 AM</label>
-          <input type="checkbox" id="sixAm" class="hour" name="weatherHours" value="06:00:00">
-          <label for="nineAm">9:00 AM</label>
-          <input type="checkbox" id="nineAm" class="hour" name="weatherHours" value="09:00:00">
-          <label for="twelvePm">12:00 PM</label>
-          <input type="checkbox" id="twelvePm" class="hour" name="weatherHours" value="12:00:00" checked>
-          <label for="threePm">3:00 PM</label>
-          <input type="checkbox" id="threePm" class="hour" name="weatherHours" value="15:00:00" checked>
-          <label for="sixPM">6:00 PM</label>
-          <input type="checkbox" id="sixPM" class="hour" name="weatherHours" value="18:00:00" checked>
-          <label for="ninePm">9:00 PM</label>
-          <input type="checkbox" id="ninePm" class="hour" name="weatherHours" value="21:00:00">
-          <br>
-          <label for="csFormat">City, State</label>
-          <input type="radio" id="csFormat" class="format" name="weatherFormat" value="cs" checked>
-          <label for="zFormat">ZIP Code</label>
-          <input type="radio" id="zFormat" class="format" name="weatherFormat" value="z">
-          <label for="llFormat">Latitude, Longitude</label>
-          <input type="radio" id="llFormat" class="format" name="weatherFormat" value="ll">
-          <br>
-          <input type="text" id="weatherSearch" name="weatherSearch" placeholder="Enter your location here or use the Local button to find the weather nearby">
-          <br>
-          <input type="submit" id="submitBtn" value="Search">
-          <button type="button" id="localBtn">Local</button>
+          <div class="form-row align-items-center">
+            <div class="row-header col-2 text-center">Hours</div>
+            <div class="form-group col-10">
+              <div class="form-check form-check-inline">
+                <input type="checkbox" id="twelveAm" class="hour form-check-input align-item" name="weatherHours" value="00:00:00">
+                <label for="twelveAm" class="check-time form-check-label">12:00 AM</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="checkbox" id="threeAm" class="hour form-check-input" name="weatherHours" value="03:00:00">
+                <label for="threeAm" class="check-time form-check-label">3:00 AM</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="checkbox" id="sixAm" class="hour form-check-input" name="weatherHours" value="06:00:00">
+                <label for="sixAm" class="check-time form-check-label">6:00 AM</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="checkbox" id="nineAm" class="hour form-check-input" name="weatherHours" value="09:00:00">
+                <label for="nineAm" class="check-time form-check-label">9:00 AM</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="checkbox" id="twelvePm" class="hour form-check-input" name="weatherHours" value="12:00:00" checked>
+                <label for="twelvePm" class="check-time form-check-label">12:00 PM</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="checkbox" id="threePm" class="hour form-check-input" name="weatherHours" value="15:00:00" checked>
+                <label for="threePm" class="check-time form-check-label">3:00 PM</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="checkbox" id="sixPM" class="hour form-check-input" name="weatherHours" value="18:00:00" checked>
+                <label for="sixPM" class="check-time form-check-label">6:00 PM</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="checkbox" id="ninePm" class="hour form-check-input" name="weatherHours" value="21:00:00">
+                <label for="ninePm" class="check-time form-check-label">9:00 PM</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row align-items-center">
+            <div class="row-header col-2 text-center">Format</div>
+            <div class="form-group">
+              <div class="form-check form-check-inline">
+                <input type="radio" id="csFormat" class="format form-check-input" name="weatherFormat" value="cs" checked>
+                <label for="csFormat" class="radio-format form-check-label">City, State</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="radio" id="zFormat" class="format form-check-input" name="weatherFormat" value="z">
+                <label for="zFormat" class="radio-format form-check-label">ZIP Code</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="radio" id="llFormat" class="format form-check-input" name="weatherFormat" value="ll">
+                <label for="llFormat" class="radio-format form-check-label">Latitude, Longitude</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row align-items-center">
+            <div class="row-header col-2 text-center">Location</div>
+            <div class="form-group col-10">
+              <input type="text" id="weatherSearch" class="search form-control" name="weatherSearch" placeholder="Enter your location here or search your Local weather">
+            </div>
+          </div>
+          <div class="form-row align-items-center">
+            <div class="form-group">
+              <input type="submit" id="submitBtn" value="Search">
+              <button type="button" id="localBtn">Local</button>
+            </div>
+          </div>
         </form>
       </div>
       <% if (locals.weather) { %>
         <div class="search-results container">
-          <h1>Five Day Clear Cast</h1>
-          <h3><%= locals.weather.locationName %></h3>
+          <div class="row search-header">
+            <div class="col text-center">
+              <h3><%= locals.weather.locationName %></h3>
+            </div>
+          </div>
+          <div class="row days-listing">
+            <div class="display-day col"></div>
+            <% for (let i = 0; i < locals.weather.displayDays.length; i++) { %>
+              <div class="display-day col text-center">
+                <%= locals.weather.displayDays[i] %>
+              </div>
+            <% } %>
+          </div>
+          <% for (let i = 0; i < locals.weather.displayHours.length; i++) {%>
+            <div class="row hours-listing">
+              <div class="display-hour col text-center">
+                <%= locals.weather.displayHours[i] %>
+              </div>
+              <div class="day-one-hour col text-center">
+                <%= locals.weather.dayOne[i] %>
+              </div>
+              <div class="day-two-hour col text-center">
+                <%= locals.weather.dayTwo[i] %>
+              </div>
+              <div class="day-three-hour col text-center">
+                <%= locals.weather.dayThree[i] %>
+              </div>
+            </div>
+          <% } %>
         </div>
       <% } %>
       <% if (locals.error) { %>
