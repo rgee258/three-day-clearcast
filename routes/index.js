@@ -23,6 +23,8 @@ router.post('/', async function(req, res, next) {
       throw weatherResults;
     }
 
+    console.log(weatherResults);
+
     const displayResults = gatherResults(req.body.weatherHours, weatherResults);
     console.log(displayResults);
     res.render('index', { weather: displayResults });
@@ -53,11 +55,16 @@ async function getWeather(input, urlChoice) {
  * formButtonError()
  *
  * Checks if any of the form button inputs are undefined
+ * Checks that there is only one format selected
  * Returns a boolean
  */
-function formButtonError(hoursCount, formatCount) {
+function formButtonError(hoursSelected, formatSelected) {
 
-  if (typeof hoursCount === 'undefined' || typeof formatCount === 'undefined') {
+  if (typeof hoursSelected === 'undefined' || typeof formatSelected === 'undefined') {
+    return true;
+  }
+
+  if (typeof formatSelected !== 'string') {
     return true;
   }
 
@@ -93,22 +100,75 @@ function parseInput(input) {
 
 function gatherResults(hours, response) {
 
-  let results = {};
+  console.log(hours);
+  console.log(hours.length);
+
+  let hoursList = [];
   let days = [];
+
+  let results = {};
+  let displayHours = [];
+  let displayDays = [];
   let daysForecast = [];
 
   const startDate = getStartDate(hours, response);
 
+  // Case handling if one hour is selected, which is not an array but a string
+  // Otherwise hoursList is pushed the values of the original hours array
+  if (typeof hours === 'string') {
+    hoursList.push(hours);
+  } else {
+    hoursList = [...hours];
+  }
+
+  // Convert hours into 12 hour clock format for display
+  for (let i = 0; i < hoursList.length; i++) {
+    switch (hoursList[i]) {
+      case '00:00:00':
+        displayHours.push('12:00 AM');
+        break;
+      case '03:00:00':
+        displayHours.push('3:00 AM');
+        break;
+      case '06:00:00':
+        displayHours.push('6:00 AM');
+        break;
+      case '09:00:00':
+        displayHours.push('9:00 AM');
+        break;
+      case '12:00:00':
+        displayHours.push('12:00 PM');
+        break;
+      case '15:00:00':
+        displayHours.push('3:00 PM');
+        break;
+      case '18:00:00':
+        displayHours.push('6:00 PM');
+        break;
+      case '21:00:00':
+        displayHours.push('9:00 PM');
+        break;
+      default:
+        displayHours.push('Error');
+        break;
+    }
+  }
+
+  // For usage in retrieving weather results for forecast results
+  // Later parsed for display
   for (let i = 0; i < 3; i++) {
     days.push(addDays(startDate, i));
   }
 
+  // Go through each day, check that the date is in the days list
+  // Also check that the hour is in the hour list
+  // Then check the weather code and assign the status for that day
   for (let i = 0; i < days.length; i++) {
 
     let currentDay = [];
 
     for (let j = 0; j < response.list.length; j++) {
-      if (days[i] === response.list[j].dt_txt.slice(0, 10) && hours.includes(response.list[j].dt_txt.slice(11))) {
+      if (days[i] === response.list[j].dt_txt.slice(0, 10) && hoursList.includes(response.list[j].dt_txt.slice(11))) {
         // Add clear or not clear based on weather id
         if (response.list[j].weather[0].id >= 800 || (response.list[j].weather[0].id >= 700 && response.list[j].weather[0].id < 750)) {
           currentDay.push('Clear');
@@ -121,13 +181,27 @@ function gatherResults(hours, response) {
     daysForecast.push(currentDay);
   }
 
+  // Parse the days for display
+  for (let i = 0; i < days.length; i++) {
+    let splitDate = days[i].split('-');
+    let dayMonthSplit = splitDate.slice(1);
+    displayDays.push(dayMonthSplit.join('/'));
+  }
+
+  // Handle undefined typing for the city name
   if (typeof response.city.name === 'undefined') {
     results.locationName = 'Unknown City Name';
   } else {
     results.locationName = response.city.name;
   }
 
-  results.days = days;
+
+  for (let i = daysForecast[0].length; i < daysForecast[1].length; i++) {
+    daysForecast[0].unshift(' ');
+  }
+
+  results.displayDays = displayDays;
+  results.displayHours = displayHours;
   results.dayOne = daysForecast[0];
   results.dayTwo = daysForecast[1];
   results.dayThree = daysForecast[2];
@@ -179,6 +253,7 @@ function getStartDate(hours, response) {
   return addDays(todayDate, 1);
 }
 
+// Changes the oldDate passed in into a date with the amount of days passed in dayCount
 function addDays(oldDate, dayCount) {
   let nextDate = new Date(oldDate);
   nextDate.setDate(nextDate.getDate() + dayCount);

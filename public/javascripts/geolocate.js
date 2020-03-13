@@ -29,7 +29,7 @@ function getLocal() {
     document.querySelector('#weather-form #llFormat').checked = true;
   }
 
-  // localError removes previous display errors then creates and displays a geolocation error
+  // localError removes previous display results then creates and displays a geolocation error
   function localError(err) {
 
     let geoErrorDisplay = document.querySelector('.geo-error');
