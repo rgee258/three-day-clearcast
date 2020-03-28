@@ -1,13 +1,121 @@
+/* General Styling */
+
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #566573;
 }
 
 a {
   color: #00B7FF;
 }
 
+/* Bootstrap Custom Override Styling */
+
+.btn {
+  font-size: 0.7rem;
+}
+
+.btn-block+.btn-block {
+  margin: 0;
+}
+
+.btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+
+group:not(:first-child)>.btn, .btn-group>.btn:not(:first-child) {
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-link:hover {
+  color: orange;
+}
+
+.form-group {
+  margin-top: 0.5%;
+  margin-bottom: 0.5%;
+}
+
+/* Navigation */
+
+.main-nav {
+  background-color: #1C2833;
+}
+
+.nav-title {
+  color: white;
+}
+
+.nav-title:hover {
+  color: white;
+}
+
+/* Home Page */
+
+.main-content {
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #1C2833;
+}
+
+.form-area {
+  margin-top: 2%;
+}
+
+.form-area, .results-area {
+  padding: 2% 0;
+}
+
 .form-row {
-  margin-top: 5px;
-  margin-bottom: 5px;
   background-color: gray;
 }
+
+.form-row + .form-row {
+  margin-top: 1.5%;
+}
+
+.hours-row:last-child {
+  margin-top: 1%;
+}
+
+.row-header {
+  color: white;
+  background-color: #424949;
+}
+
+.row-header * {
+  margin-bottom: 0;
+}
+
+.radio-format {
+  margin: 0;
+}
+
+.search-btns {
+  font-size: 0.85rem;
+}
+
+.search-results {
+  padding-top: 1%;
+  color: white;
+  background-color: #1C2833;
+}
+
+.display-day, .display-hour {
+  background-color: #424949;
+}
+
+.day-clear {
+  background-color: #1D8348;
+}
+
+.day-reconsider {
+  background-color: #943126;
+}
+
+/* About Page */
