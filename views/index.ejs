@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
       <title>Three Day Clearcast</title>
       <link rel="stylesheet" href="css/bootstrap.min.css"/>
-      <link rel="stylesheet" href="/stylesheets/style.css"/>
+      <link rel="stylesheet" href="stylesheets/style.css"/>
       <script src="jquery.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
       <script src="/javascripts/geolocate.js"></script>
@@ -12,116 +12,188 @@
     </head>
   <body>
     <%- include('partials/navigation.ejs') %>
-    <div class="main-content container w-50">
+    <div class="main-content container-fluid w-75">
       <div class="form-area">
         <form id="weather-form" action="/" method="POST">
-          <div class="form-row align-items-center">
-            <div class="row-header col-2 text-center">Hours</div>
-            <div class="form-group col-10">
-              <div class="form-check form-check-inline">
-                <input type="checkbox" id="twelveAm" class="hour form-check-input align-item" name="weatherHours" value="00:00:00">
-                <label for="twelveAm" class="check-time form-check-label">12:00 AM</label>
+          <div class="form-row">
+            <div class="row-header col-2 text-center d-flex justify-content-center align-items-center">
+              <p>Hours</p>
+            </div>
+            <div class="form-group col">
+              <div class="hours-row row mx-2 mx-lg-5">
+                <div class="col-lg-6">
+                  <div class="row">
+                    <div class="btn-group-toggle col" data-toggle="buttons">
+                      <label for="twelveAm" class="check-time btn btn-block btn-dark">
+                        <input type="checkbox" id="twelveAm" class="hour" name="weatherHours" value="00:00:00" autocomplete="off">
+                        <span class="btn-text">12:00 AM</span>
+                      </label>
+                    </div>
+                    <div class="btn-group-toggle col" data-toggle="buttons">
+                      <label for="threeAm" class="check-time btn btn-block btn-dark">
+                        <input type="checkbox" id="threeAm" class="hour" name="weatherHours" value="03:00:00" autocomplete="off">
+                        <span class="btn-text">3:00 AM</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="row">
+                    <div class="btn-group-toggle col" data-toggle="buttons">
+                      <label for="sixAm" class="check-time btn btn-block btn-dark">
+                        <input type="checkbox" id="sixAm" class="hour" name="weatherHours" value="06:00:00" autocomplete="off">
+                        <span class="btn-text">6:00 AM</span>
+                      </label>
+                    </div>
+                    <div class="btn-group-toggle col" data-toggle="buttons">
+                      <label for="nineAm" class="check-time btn btn-block btn-dark">
+                        <input type="checkbox" id="nineAm" class="hour" name="weatherHours" value="09:00:00" autocomplete="off">
+                        <span class="btn-text">9:00 AM</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="form-check form-check-inline">
-                <input type="checkbox" id="threeAm" class="hour form-check-input" name="weatherHours" value="03:00:00">
-                <label for="threeAm" class="check-time form-check-label">3:00 AM</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input type="checkbox" id="sixAm" class="hour form-check-input" name="weatherHours" value="06:00:00">
-                <label for="sixAm" class="check-time form-check-label">6:00 AM</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input type="checkbox" id="nineAm" class="hour form-check-input" name="weatherHours" value="09:00:00">
-                <label for="nineAm" class="check-time form-check-label">9:00 AM</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input type="checkbox" id="twelvePm" class="hour form-check-input" name="weatherHours" value="12:00:00" checked>
-                <label for="twelvePm" class="check-time form-check-label">12:00 PM</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input type="checkbox" id="threePm" class="hour form-check-input" name="weatherHours" value="15:00:00" checked>
-                <label for="threePm" class="check-time form-check-label">3:00 PM</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input type="checkbox" id="sixPM" class="hour form-check-input" name="weatherHours" value="18:00:00" checked>
-                <label for="sixPM" class="check-time form-check-label">6:00 PM</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input type="checkbox" id="ninePm" class="hour form-check-input" name="weatherHours" value="21:00:00">
-                <label for="ninePm" class="check-time form-check-label">9:00 PM</label>
+              <div class="hours-row row mx-2 mx-lg-5">
+                <div class="col-lg-6">
+                  <div class="row">
+                    <div class="btn-group-toggle col" data-toggle="buttons">
+                      <label for="twelvePm" class="check-time btn btn-block btn-dark">
+                        <input type="checkbox" id="twelvePm" class="hour" name="weatherHours" value="12:00:00" autocomplete="off" checked>
+                        <span class="btn-text">12:00 PM</span>
+                      </label>
+                    </div>
+                    <div class="btn-group-toggle col" data-toggle="buttons">
+                      <label for="threePm" class="check-time btn btn-block btn-dark">
+                        <input type="checkbox" id="threePm" class="hour" name="weatherHours" value="15:00:00" checked>
+                        <span class="btn-text">3:00 PM</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="row">
+                    <div class="btn-group-toggle col" data-toggle="buttons">
+                      <label for="sixPM" class="check-time btn btn-block btn-dark">
+                        <input type="checkbox" id="sixPM" class="hour" name="weatherHours" value="18:00:00" checked><span class="btn-text">6:00 PM</span>
+                      </label>
+                    </div>
+                    <div class="btn-group-toggle col" data-toggle="buttons">
+                      <label for="ninePm" class="check-time btn btn-block btn-dark">
+                        <input type="checkbox" id="ninePm" class="hour" name="weatherHours" value="21:00:00">
+                        <span class="btn-text">9:00 PM</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="form-row align-items-center">
-            <div class="row-header col-2 text-center">Format</div>
+          <div class="form-row">
+            <div class="row-header col-2 text-center d-flex justify-content-center align-items-center">Format</div>
+            <div class="form-group col">
+              <div class="row btn-group btn-group-toggle d-flex justify-content-center" data-toggle="buttons">
+                <label for="csFormat" class="radio-format col-3 btn btn-block btn-dark active d-flex justify-content-center align-items-center">
+                  <input type="radio" id="csFormat" class="format" name="weatherFormat" value="cs" autocomplete="off" checked>
+                  <span class="btn-text">City, State</span>
+                </label>
+                <label for="zFormat" class="radio-format col-3 btn btn-block btn-dark mx-4 d-flex justify-content-center align-items-center">
+                  <input type="radio" id="zFormat" class="format" name="weatherFormat" value="z" autocomplete="off"><span class="btn-text">ZIP Code</span>
+                </label>
+                <label for="llFormat" class="radio-format col-3 btn btn-block btn-dark d-flex justify-content-center align-items-center">
+                  <input type="radio" id="llFormat" class="format" name="weatherFormat" value="ll" autocomplete="off">
+                  <span class="btn-text">Latitude, Longitude</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="row-header col-2 text-center d-flex justify-content-center align-items-center">Location</div>
+            <div class="form-group col d-flex justify-content-center">
+              <input type="text" id="weatherSearch" class="search form-control w-75" name="weatherSearch" placeholder="Enter your location here">
+            </div>
+          </div>
+          <div class="form-row d-flex justify-content-center">
             <div class="form-group">
-              <div class="form-check form-check-inline">
-                <input type="radio" id="csFormat" class="format form-check-input" name="weatherFormat" value="cs" checked>
-                <label for="csFormat" class="radio-format form-check-label">City, State</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input type="radio" id="zFormat" class="format form-check-input" name="weatherFormat" value="z">
-                <label for="zFormat" class="radio-format form-check-label">ZIP Code</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input type="radio" id="llFormat" class="format form-check-input" name="weatherFormat" value="ll">
-                <label for="llFormat" class="radio-format form-check-label">Latitude, Longitude</label>
-              </div>
-            </div>
-          </div>
-          <div class="form-row align-items-center">
-            <div class="row-header col-2 text-center">Location</div>
-            <div class="form-group col-10">
-              <input type="text" id="weatherSearch" class="search form-control" name="weatherSearch" placeholder="Enter your location here or search your Local weather">
-            </div>
-          </div>
-          <div class="form-row align-items-center">
-            <div class="form-group">
-              <input type="submit" id="submitBtn" value="Search">
-              <button type="button" id="localBtn">Local</button>
+              <input type="submit" id="submitBtn" class="search-btns btn btn-primary" value="Search">
+              <button type="button" id="localBtn" class="search-btns btn btn-info">Local</button>
             </div>
           </div>
         </form>
       </div>
-      <% if (locals.weather) { %>
-        <div class="search-results container">
+    </div>
+    <% if (locals.weather) { %>
+      <div class="results-area">
+        <div class="search-results container w-50">
           <div class="row search-header">
             <div class="col text-center">
               <h3><%= locals.weather.locationName %></h3>
             </div>
           </div>
           <div class="row days-listing">
-            <div class="display-day col"></div>
+            <div class="display-day col border-top"></div>
             <% for (let i = 0; i < locals.weather.displayDays.length; i++) { %>
-              <div class="display-day col text-center">
+              <div class="display-day col text-center border-left border-top">
                 <%= locals.weather.displayDays[i] %>
               </div>
             <% } %>
           </div>
           <% for (let i = 0; i < locals.weather.displayHours.length; i++) {%>
-            <div class="row hours-listing">
-              <div class="display-hour col text-center">
+            <div class="hours-listing row">
+              <div class="display-hour col text-center border-right border-top">
                 <%= locals.weather.displayHours[i] %>
               </div>
-              <div class="day-one-hour col text-center">
-                <%= locals.weather.dayOne[i] %>
-              </div>
-              <div class="day-two-hour col text-center">
-                <%= locals.weather.dayTwo[i] %>
-              </div>
-              <div class="day-three-hour col text-center">
-                <%= locals.weather.dayThree[i] %>
-              </div>
+              <% if (locals.weather.dayOne[i] === "Clear") { %>
+                <div class="day-clear day-one-hour col text-center border-right border-top">
+                  <%= locals.weather.dayOne[i] %>
+                </div>
+              <% } else if (locals.weather.dayOne[i] === "Reconsider") { %>
+                <div class="day-reconsider day-one-hour col text-center border-right border-top">
+                  <%= locals.weather.dayOne[i] %>
+                </div>
+              <% } else { %>
+                <div class="day-empty day-one-hour col text-center border-right border-top">
+                  <%= locals.weather.dayOne[i] %>
+                </div>
+              <% } %>
+              <% if (locals.weather.dayTwo[i] === "Clear") { %>
+                <div class="day-clear day-two-hour col text-center border-right border-top">
+                  <%= locals.weather.dayTwo[i] %>
+                </div>
+              <% } else if (locals.weather.dayTwo[i] === "Reconsider") { %>
+                <div class="day-reconsider day-two-hour col text-center border-right border-top">
+                  <%= locals.weather.dayTwo[i] %>
+                </div>
+              <% } else { %>
+                <div class="day-empty day-two-hour col text-center border-right border-top">
+                  <%= locals.weather.dayTwo[i] %>
+                </div>
+              <% } %>
+              <% if (locals.weather.dayThree[i] === "Clear") { %>
+                <div class="day-clear day-three-hour col text-center border-top">
+                  <%= locals.weather.dayThree[i] %>
+                </div>
+              <% } else if (locals.weather.dayThree[i] === "Reconsider") { %>
+                <div class="day-reconsider day-three-hour col text-center border-top">
+                  <%= locals.weather.dayThree[i] %>
+                </div>
+              <% } else { %>
+                <div class="day-empty day-three-hour col text-center border-right border-top">
+                  <%= locals.weather.dayThree[i] %>
+                </div>
+              <% } %>
             </div>
           <% } %>
         </div>
-      <% } %>
-      <% if (locals.error) { %>
+      </div>
+    <% } %>
+    <% if (locals.error) { %>
+      <div class="results-area">
         <div class="search-error alert alert-danger col-8 offset-2">
           <h3><%= locals.error.code %></h3>
           <p><%= locals.error.message %></p>
         </div>
-      <% } %>
-    </div>
+      </div>
+    <% } %>
   </body>
 </html>
