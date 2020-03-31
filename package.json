@@ -21,6 +21,8 @@
     "popper.js": "^1.16.1"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.9.0",
+    "babel-jest": "^25.2.4",
     "jest": "^25.1.0",
     "nodemon": "^2.0.2"
   },
@@ -29,6 +31,9 @@
     "moduleFileExtensions": [
       "js",
       "ejs"
+    ],
+    "setupFiles": [
+      "<rootDir>/jest/envVars.js"
     ]
   }
 }

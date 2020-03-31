@@ -1,3 +1,24 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Three Day Clearcast</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="stylesheets/style.css"/>
+    <script src="jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <%- include('partials/navigation.ejs') %>
+    <div class="error-area container-fluid">
+      <div class="error-section alert alert-danger col-8 offset-2">
+        <div class="error-header row mx-2">
+          <h3><%= error.status %>: <%= message %></h3>
+        </div>
+        <div class="error-message row mx-2">
+          <p>The specified resource could not be found on the server. Make sure that the web address is correct and please try again.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

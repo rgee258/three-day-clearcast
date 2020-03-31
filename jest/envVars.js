@@ -1,0 +1,1 @@
+process.env.OPENWEATHER_API_KEY=0
