@@ -35,7 +35,7 @@ function createError(errors) {
   let errorDisplay = document.createElement('div');
   errorDisplay.classList.add('form-error', 'alert', 'alert-danger', 'col-8', 'offset-2');
 
-  let errorHeader = document.createElement('p');
+  let errorHeader = document.createElement('h4');
   errorHeader.textContent = 'Submission failed from the following error(s):';
   errorDisplay.appendChild(errorHeader);
 
@@ -59,45 +59,43 @@ function validateForm() {
 
   let errors = [];
 
-  if (invalidInput()) {
+  if (emptyValue(document.querySelector('#weatherSearch'))) {
     errors.push('Location cannot be empty.');
   }
 
-  if (invalidHours()) {
+  if (invalidCheckbox(document.querySelectorAll('#weather-form .hour:checked'))) {
     errors.push('At least one hour must be selected.');
   }
 
-  if (invalidFormat()) {
+  if (invalidRadio(document.querySelectorAll('#weather-form .format:checked'))) {
     errors.push('One search format must be selected.');
   }
 
   return errors;
 }
 
-// invalidInput() checks that the weather text input is not empty
-function invalidInput() {
-  const search = document.querySelector('#weatherSearch');
-  if (search.value == null || search.value == undefined || search.value.length === 0) {
+// emptyValue() checks that the node listed has a value that is not empty
+function emptyValue(node) {
+  if (node.value == null || node.value == undefined || node.value.length === 0) {
     return true;
   }
 
   return false;
 }
 
-// invalidHours() checks that at least one hour is selected
-function invalidHours() {
-  const hours = document.querySelectorAll('#weather-form .hour:checked');
-  if (hours.length === 0) {
+// invalidHours() checks that the provided checkbox nodeList is greater than length 0
+function invalidCheckbox(nodeList) {
+  if (nodeList.length === 0) {
     return true;
   }
 
   return false;
 }
 
-// invalidFormat() checks that only one format is selected
-function invalidFormat() {
-  const formats = document.querySelectorAll('#weather-form .format:checked');
-  if (formats.length !== 1) {
+// invalidRadio() checks that the provided radio button nodeList is only of length 1
+
+function invalidRadio(nodeList) {
+  if (nodeList.length !== 1) {
     return true;
   }
 
@@ -108,3 +106,5 @@ function invalidFormat() {
 window.addEventListener('DOMContentLoaded', (event) => {
   document.querySelector('#weather-form').addEventListener('submit', checkForm);
 });
+
+export { validateForm, emptyValue, invalidCheckbox, invalidRadio };

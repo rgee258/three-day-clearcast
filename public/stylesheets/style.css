@@ -47,6 +47,10 @@ group:not(:first-child)>.btn, .btn-group>.btn:not(:first-child) {
   background-color: #1C2833;
 }
 
+.main-nav a {
+  font-size: 1.5rem;
+}
+
 .nav-title {
   color: white;
 }
@@ -57,18 +61,10 @@ group:not(:first-child)>.btn, .btn-group>.btn:not(:first-child) {
 
 /* Home Page */
 
-.main-content {
-  padding-left: 5px;
-  padding-right: 5px;
-  background-color: #1C2833;
-}
-
 .form-area {
-  margin-top: 2%;
-}
-
-.form-area, .results-area {
-  padding: 2% 0;
+  margin-top: 3%;
+  padding: 2.5% 5px;
+  background-color: #1C2833;
 }
 
 .form-row {
@@ -100,8 +96,29 @@ group:not(:first-child)>.btn, .btn-group>.btn:not(:first-child) {
   font-size: 0.85rem;
 }
 
+/* Home Page - Error Displays */
+
+.form-error {
+  margin: 3% auto;
+}
+
+.geo-error {
+  margin: 3% auto;
+}
+
+.geo-error p {
+  margin-bottom: 0;
+}
+
+/* Home Page - Results */
+
+.results-area {
+  margin: 3% 0;
+}
+
 .search-results {
   padding-top: 1%;
+  padding-bottom: 2.5%;
   color: white;
   background-color: #1C2833;
 }
@@ -119,3 +136,48 @@ group:not(:first-child)>.btn, .btn-group>.btn:not(:first-child) {
 }
 
 /* About Page */
+
+.about-area {
+  margin: 3% auto;
+  color: white;
+}
+
+.about-area a:hover {
+  color: orange;
+  text-decoration: none;
+}
+
+.about-section {
+  background-color: #424949;
+}
+
+.about-header {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  color: #EAEDED;
+  background-color: #1C2833;
+}
+
+.about-content {
+  padding: 2% 0;
+}
+
+.about-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Error Page */
+
+.error-area {
+  margin: 10% auto;
+  color: white;
+}
+
+.error-section {
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.error-message p {
+  margin-bottom: 0;
+}

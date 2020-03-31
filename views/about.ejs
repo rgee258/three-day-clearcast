@@ -2,22 +2,33 @@
 <html>
   <head>
     <meta charset="UTF-8">
-      <title>Three Day Clearcast</title>
-      <link rel="stylesheet" href="css/bootstrap.min.css"/>
-      <link rel="stylesheet" href="stylesheets/style.css"/>
-      <script src="jquery.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
-      <script src="/javascripts/geolocate.js"></script>
-      <script src="/javascripts/formHandler.js"></script>
-    </head>
+    <title>Three Day Clearcast</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="stylesheets/style.css"/>
+    <script src="jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </head>
   <body>
     <%- include('partials/navigation.ejs') %>
-    <div class="about-content container-fluid w-75">
-      <div class="row">
-        <h1>About</h1>
-      </div>
-      <div class="row">
-        
+    <div class="about-area container-fluid w-75">
+      <div class="about-section container-fluid">
+        <div class="about-header row">
+          <h3 class="mx-4">About</h3>
+        </div>
+        <div class="about-content row">
+          <p class="mx-4">Three Day Clearcast is a small weather application created to scout out whether or not the upcoming days will have clear weather. The idea for this project originally came from the hindrance of checking the weather whenever I wanted to hang out with friends. Though not perfect and can be improved in multiple ways, this is my attempt at looking for clear weather a bit easier.</p>
+          <p class="mx-4">All weather data is provided by <a href="https://openweathermap.org/">OpenWeatherMap</a>.</p>
+        </div>
+        <div class="about-header row">
+          <h3 class="mx-4">Usage Notes</h3>
+        </div>
+        <div class="about-content row">
+          <p class="mx-4">Weather results are retrieved in the UTC timezone so some hours may be missing, please account for your local timezone accordingly.</p>
+          <p class="mx-4">Results for a day are retrieved at every third hour and is limited only to the next two days.</p>
+          <p class="mx-4 font-italic font-weight-bold">This application checks the weather conditions at specified hours for each day. The weather is always subject to change and there may be hours with volatile weather conditions not covered. This is a tool for checking for clear weather at a glance to get a general idea of what to expect, always plan to check the weather in your local area as a precaution.</p>
+          <p class="mx-4">Local search requires browser permissions to acquire your latitude and longitude, make sure to allow them should a prompt appear to make use of this feature.</p>
+          <p class="mx-4">For troubleshooting or additional documentation, refer to the GitHub link present in the navigation.</p>
+        </div>
       </div>
     </div>
   </body>
