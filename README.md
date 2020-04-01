@@ -4,7 +4,7 @@ A small weather application to see if the weather forecast in the next three day
 
 The motivation for this project originally came from the hindrance of checking the weather whenever I wanted to hang out with friends. For full day outings, it would be annoying having to always check the weather and see if it was clear when there are so many potential weather outcomes. The Three Day Clearcast is the result, even if it's far from what I would ideally like, but was fun to build and gave me some good practice in doing so.
 
-[Try it out on Heroku!](#)
+[Try it out on Heroku!](https://three-day-clearcast.herokuapp.com/)
 
 Setup
 -----
