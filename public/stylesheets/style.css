@@ -135,6 +135,10 @@ group:not(:first-child)>.btn, .btn-group>.btn:not(:first-child) {
   background-color: #943126;
 }
 
+.hours-listing:last-child {
+  border-bottom: 1px solid #dee2e6 !important;
+}
+
 /* About Page */
 
 .about-area {

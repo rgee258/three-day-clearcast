@@ -6,6 +6,7 @@
  * 1. Location input is not empty
  * 2. At least one hour is selected
  * 3. Only one format option is selected
+ * Creates DOM nodes for displaying errors
  */
 
 // checkForm() checks for validation errors, removes previous alerts, and appends an error alert if present
@@ -93,7 +94,6 @@ function invalidCheckbox(nodeList) {
 }
 
 // invalidRadio() checks that the provided radio button nodeList is only of length 1
-
 function invalidRadio(nodeList) {
   if (nodeList.length !== 1) {
     return true;

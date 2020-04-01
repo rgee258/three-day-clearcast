@@ -1,5 +1,20 @@
+/**
+ * indexController.js
+ *
+ * Controller file for index.js that contains all of the methods not directly used in the router
+ * Handles the API calls and provides methods for handling the responses for view display
+ */
+
 const fetch = require('node-fetch');
 
+/**
+ * getWeather()
+ *
+ * Asynchronous function that uses try-catch to gather API results
+ * Accepts form inputs from the user for their weather location and expected API url to call from
+ * Uses fetch to retrieve the response in JSON
+ * Returns either the successful response or the error from the catch block
+ */
 async function getWeather(input, urlChoice) {
   try {
     const weatherUrl = formatUrl(input, urlChoice);
@@ -33,6 +48,12 @@ function formButtonError(hoursSelected, formatSelected) {
   return false;
 }
 
+/** 
+ * formatUrl()
+ *
+ * Uses the user form input to determine which API url to call based on the format choice
+ * Throws an error with error code 400 as a default if the format choice is incorrect
+ */
 function formatUrl(input, choice) {
   switch (choice) {
     case 'cs':
@@ -50,7 +71,9 @@ function formatUrl(input, choice) {
 
 /** 
  * parseInput()
+ *
  * Parses string input from form for API call
+ * Returns an array of the parsed string delimited using commas
  */
 function parseInput(input) {
   const searchQuery = input.split(',', 2);
@@ -60,6 +83,13 @@ function parseInput(input) {
   return searchQuery;
 }
 
+/** 
+ * gatherResults()
+ *
+ * Uses the API response and user hours inputted to parse the wanted data from the response
+ * Handles edge cases and prepares values for display
+ * Returns an object that is passed into the display view
+ */
 function gatherResults(hours, response) {
 
   let hoursList = [];
@@ -154,7 +184,8 @@ function gatherResults(hours, response) {
     results.locationName = response.city.name;
   }
 
-
+  // Case where the first day is missing hours and is shorter than the second day
+  // Adds placeholder values for display
   for (let i = daysForecast[0].length; i < daysForecast[1].length; i++) {
     daysForecast[0].unshift(' ');
   }
@@ -168,6 +199,12 @@ function gatherResults(hours, response) {
   return results;
 }
 
+/** 
+ * formatError()
+ *
+ * Checks error codes and produces error messages for each code
+ * Returns an object containing an error code and error message
+ */
 function formatError(errorCode) {
 
   let error = {};
@@ -197,6 +234,13 @@ function formatError(errorCode) {
   return error;
 }
 
+/** 
+ * getStartDate()
+ *
+ * Handles the edge case where the hours selected have passed for the current day
+ * Uses the user inputted hours and API response to check if there are any hours for the current day
+ * If there are no responses for the current day, returns a date one day ahead, otherwise returns the current day
+ */
 function getStartDate(hours, response) {
 
   let todayDate = new Date(Date.now() + (response.city.timezone * 1000)).toISOString().slice(0, 10);
@@ -212,7 +256,12 @@ function getStartDate(hours, response) {
   return addDays(todayDate, 1);
 }
 
-// Changes the oldDate passed in into a date with the amount of days passed in dayCount
+/** 
+ * addDays()
+ *
+ * Adds days to a date using and old date and day count
+ * Returns a new date with the amount of days passed from the original date
+ */
 function addDays(oldDate, dayCount) {
   let nextDate = new Date(oldDate);
   nextDate.setDate(nextDate.getDate() + dayCount);
