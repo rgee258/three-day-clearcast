@@ -1,4 +1,18 @@
+/**
+ * formHandler.test.js
+ *
+ * Jest test file for testing formHandler.js
+ * Tests the following methods:
+ *  validateForm
+ *  emptyValue
+ *  invalidCheckbox
+ *  invalidRadio
+ * Remaining methods are avoided due to their extensive DOM manipulation
+ */
+
 const formHandler = require('../public/javascripts/formHandler.js');
+
+// validateForm Tests
 
 test('validateForm with no errors has an array of length 0', () => {
   // Create document body with similar form
@@ -81,6 +95,8 @@ test('validateForm with all errors has an array of length 3', () => {
       'One search format must be selected.']);
 })
 
+// emptyValue Tests
+
 test('emptyValue returns true with an empty input value', () => {
   // Create document body with input tag without value
   document.body.innerHTML = 
@@ -100,6 +116,8 @@ test('emptyValue returns false with an input with a default value', () => {
 
   expect(formHandler.emptyValue(document.querySelector('.inputtest'))).toBeFalsy;
 });
+
+// invalidCheckbox Tests
 
 test('invalidCheckbox returns true with no checked inputs', () => {
   // Create document body with checkboxes
@@ -122,6 +140,8 @@ test('invalidCheckbox returns false with at least one checked input', () => {
 
   expect(formHandler.invalidCheckbox(document.querySelectorAll('.cbtest:checked'))).toBeFalsy;
 });
+
+// invalidRadio Tests
 
 test('invalidRadio returns true when there are no selected radio inputs', () => {
   // Create document body with radio buttons

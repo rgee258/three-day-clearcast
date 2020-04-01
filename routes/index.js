@@ -1,3 +1,11 @@
+/**
+ * index.js
+ *
+ * Router for the index path
+ * Handles GET and POST requests to the index
+ * Also contains the GET to /about
+ */
+
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/indexController.js')
@@ -24,7 +32,6 @@ router.post('/', async function(req, res, next) {
     }
 
     const displayResults = controller.gatherResults(req.body.weatherHours, weatherResults);
-    console.log(displayResults);
     res.render('index', { weather: displayResults });
   }
 
@@ -33,6 +40,7 @@ router.post('/', async function(req, res, next) {
   }
 
 }, function(req, res, next) {
+  // Handle error case where the API response is not 200
   res.render('index', { error: controller.formatError('400') })
 });
 
