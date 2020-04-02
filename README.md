@@ -11,12 +11,12 @@ Table of Contents
 
 - [Three Day Clearcast](#three-day-clearcast)
 - [Setup](#setup)
-- [Usage][#usage]
-  - [Important Usage Notes][#important-usage-notes]
-  - [Custom Search][#custom-search]
-  - [Local Search][#local-search]
+- [Usage](#usage)
+  - [Important Usage Notes](#important-usage-notes)
+  - [Custom Search](#custom-search)
+  - [Local Search](#local-search)
 - [Testing](#testing)
-- [Future Improvement Considerations][#future-improvement-considerations]
+- [Future Improvement Considerations](#future-improvement-considerations)
 - [Useful References](#useful-references)
 
 Setup
@@ -61,17 +61,42 @@ Usage
 ### Custom Search
 
 1. Click on all of the hours you want to receive results for. They will be darkened when selected.
+
+![Hours Selection](https://github.com/rgee258/three-day-clearcast/raw/master/public/images/hours-selection.png)
+
 2. Click on your preferred format button.
+
+![Format Selection](https://github.com/rgee258/three-day-clearcast/raw/master/public/images/format-selection.png)
+
 3. Type in your location following the format you selected.
+
+![Location Selection](https://github.com/rgee258/three-day-clearcast/raw/master/public/images/custom-input.png)
+
 4. Click on the **Search** button and get your results!
+
+![Search Button](https://github.com/rgee258/three-day-clearcast/raw/master/public/images/search-custom.png)
 
 ### Local Search
 
 1. Click on all of the hours you want to receive results for. They will be darkened when selected.
+
+![Hours Selection](https://github.com/rgee258/three-day-clearcast/raw/master/public/images/hours-selection.png)
+
 2. Click on the **Local** button.
+
+![Local Button](https://github.com/rgee258/three-day-clearcast/raw/master/public/images/search-local.png)
+
 3. If necessary, you may need to allow for geolocation services in your browser. Please allow them.
+
+![Geolocation Permission](https://github.com/rgee258/three-day-clearcast/raw/master/public/images/geolocation.png)
+
 4. Your format will be set to **Latitude, Longitude** and your location will have your local coordinates automatically entered.
+
+![Local Input](https://github.com/rgee258/three-day-clearcast/raw/master/public/images/local-input.png)
+
 5. Click on the **Search** button and get your results!
+
+![Search Button](https://github.com/rgee258/three-day-clearcast/raw/master/public/images/search-custom.png)
 
 Testing
 -------
