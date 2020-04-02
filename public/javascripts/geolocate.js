@@ -21,12 +21,22 @@ function getLocal() {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
 
+    // Set the coordinates in the input
     document.querySelector("#weatherSearch").value = `${latitude}, ${longitude}`;
-    radioBtns = document.querySelectorAll('#weather-form .format:checked');
-    for (let i = 0; i < radioBtns.length; i++) {
-      radioBtns[i].checked = false;
+
+    // Remove any existing format selection
+    radioBtns = document.querySelectorAll('.format:checked');
+    if (radioBtns.length > 0) {
+      for (let i = 0; i < radioBtns.length; i++) {
+        radioBtns[i].checked = false;
+        radioBtns[i].parentNode.classList.remove('active');
+      }
     }
-    document.querySelector('#weather-form #llFormat').checked = true;
+
+    // Set the format to latitude, longitude
+    const llNode = document.querySelector('#weather-form #llFormat');
+    llNode.checked = true;
+    llNode.parentNode.classList.add('active');
   }
 
   // localError removes previous display results then creates and displays a geolocation error

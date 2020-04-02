@@ -6,6 +6,19 @@ The motivation for this project originally came from the hindrance of checking t
 
 [Try it out on Heroku!](https://three-day-clearcast.herokuapp.com/)
 
+Table of Contents
+-----------------
+
+- [Three Day Clearcast](#three-day-clearcast)
+- [Setup](#setup)
+- [Usage][#usage]
+  - [Important Usage Notes][#important-usage-notes]
+  - [Custom Search][#custom-search]
+  - [Local Search][#local-search]
+- [Testing](#testing)
+- [Future Improvement Considerations][#future-improvement-considerations]
+- [Useful References](#useful-references)
+
 Setup
 -----
 
@@ -35,21 +48,15 @@ You can then start the application with the following command.
 npm run start
 ```
 
-Testing
--------
-
-A couple of small test suites are also provided using the Jest testing framework. The tests available are done for most of the client-side features used in the application, as well as some of the backend methods that are used for handling weather responses.
-
-To run the tests, use the following.
-
-```bash
-npm run test
-```
-
-Included is a jest directory which contains a file used for configuring the environment variables used in testing, any changes applied for tested environment variables can be done there.
-
 Usage
 -----
+
+### Important Usage Notes
+
+- Results are displayed in the **UTC** timezone, so results displayed may vary according to your local timezone.
+- Results for a day are retrieved at every third hour and is limited only to the next two days.
+- The weather covered is not representative of the overall weather conditions between every three hours, but of the weather at every third hour. There may be volatile conditions that are not displayed.
+- This tool is used to get some quick insight of what to check over the next couple of days, it should be used in tandem with your local weather services regardless of what results are displayed.
 
 ### Custom Search
 
@@ -65,6 +72,19 @@ Usage
 3. If necessary, you may need to allow for geolocation services in your browser. Please allow them.
 4. Your format will be set to **Latitude, Longitude** and your location will have your local coordinates automatically entered.
 5. Click on the **Search** button and get your results!
+
+Testing
+-------
+
+A couple of small test suites are also provided using the Jest testing framework. The tests available are done for most of the client-side features used in the application, as well as some of the backend methods that are used for handling weather responses.
+
+To run the tests, use the following.
+
+```
+npm run test
+```
+
+Included is a jest directory which contains a file used for configuring the environment variables used in testing, any changes applied for tested environment variables can be done there.
 
 Future Improvement Considerations
 ---------------------------------
