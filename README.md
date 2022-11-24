@@ -4,10 +4,7 @@ A small weather application to see if the weather forecast in the next three day
 
 The motivation for this project originally came from the hindrance of checking the weather whenever I wanted to hang out with friends. For full day outings, it would be annoying having to always check the weather and see if it was clear when there are so many potential weather outcomes. The Three Day Clearcast is the result, even if it's far from what I would ideally like, but was fun to build and gave me some good practice in doing so.
 
-[Try it out on Heroku!](https://three-day-clearcast.herokuapp.com/)
-
-Table of Contents
------------------
+## Table of Contents
 
 - [Three Day Clearcast](#three-day-clearcast)
 - [Setup](#setup)
@@ -19,8 +16,7 @@ Table of Contents
 - [Future Improvement Considerations](#future-improvement-considerations)
 - [Useful References](#useful-references)
 
-Setup
------
+## Setup
 
 To run the application, first install the dependencies using
 
@@ -48,8 +44,7 @@ You can then start the application with the following command.
 npm run start
 ```
 
-Usage
------
+## Usage
 
 ### Important Usage Notes
 
@@ -98,8 +93,7 @@ Usage
 
 ![Search Button](https://github.com/rgee258/three-day-clearcast/raw/master/public/images/search-custom.png)
 
-Testing
--------
+## Testing
 
 A couple of small test suites are also provided using the Jest testing framework. The tests available are done for most of the client-side features used in the application, as well as some of the backend methods that are used for handling weather responses.
 
@@ -111,16 +105,14 @@ npm run test
 
 Included is a jest directory which contains a file used for configuring the environment variables used in testing, any changes applied for tested environment variables can be done there.
 
-Future Improvement Considerations
----------------------------------
+## Future Improvement Considerations
 
 - Switching the API to provide more accurate and a wider range of forecast results
 - A toggle for military time
 - If possible, adapt the API to handle local time zones for results
 - Improved mobile layout handling
 
-Useful References
------------------
+## Useful References
 
 - Using res.locals in Express: https://stackoverflow.com/questions/18875292/passing-variables-to-the-next-middleware-using-next-in-express-js
 - Adding extra days to ISO formatted dates: https://stackoverflow.com/questions/38654793/how-to-add-an-extra-day-to-the-iso-format-date-in-javascript
@@ -129,5 +121,5 @@ Useful References
 - Adding npm bootstrap to app.js: https://stackoverflow.com/questions/26773767/purpose-of-installing-twitter-bootstrap-through-npm/35580597#35580597
 - Styling a set of elements but ignoring the first one: https://coderwall.com/p/uugurw/css-selector-trick-select-all-elements-except-the-first
 - Using ES6 import and export in jest testing: https://medium.com/@saplos123456/using-es6-import-and-export-statements-for-jest-testing-in-node-js-b20c8bd9041c
-- Workaround for *Unexpected token export* (see second answer): https://stackoverflow.com/questions/38296667/getting-unexpected-token-export
+- Workaround for _Unexpected token export_ (see second answer): https://stackoverflow.com/questions/38296667/getting-unexpected-token-export
 - Test process.env in Jest (see third answer): https://stackoverflow.com/questions/48033841/test-process-env-with-jest
