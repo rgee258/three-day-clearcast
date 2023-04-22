@@ -25,7 +25,7 @@
     "@babel/preset-env": "^7.9.0",
     "babel-jest": "^25.2.4",
     "jest": "^25.1.0",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.22"
   },
   "jest": {
     "testRegex": "((\\.|/*.)(test))\\.js?$",
